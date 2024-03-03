@@ -8,9 +8,21 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * Texto que aparecerá no botão
    */
   label: string
+  /**
+   * Inclui uma descrição de áudio para usuários de leitores de tela
+   */
   audioDescription?: string
+  /**
+   * Estilo do botão
+   */
   color: 'primary' | 'secondary' | 'primary_outline' | 'secondary_outline'
+  /**
+   * Tamanho do botão
+   */
   size: 'large' | 'medium' | 'small'
+  /**
+   * Tooltip do botão
+   */
   tooltip?: string
 }
 
