@@ -1,7 +1,7 @@
-import {Tooltip} from 'components'
 import React, { useEffect, useRef } from 'react'
+import {Tooltip} from '../'
 import 'tailwindcss/tailwind.css'
-import { getComponentPosition } from 'utils'
+import { getComponentPosition } from '../../utils'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
