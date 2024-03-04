@@ -20,7 +20,6 @@ test('renders button to test tooltip', async () => {
     const tooltipElement = screen.getByText(/tooltip test/i);
 
     setTimeout(()=>{
-
       expect(tooltipElement).not.toBeVisible();
     },500)
   })
