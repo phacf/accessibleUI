@@ -18,9 +18,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Navigate to Project Directory
-        run: cd accessibleUI
-
       - name: Install Dependencies
         run: npm install
 
