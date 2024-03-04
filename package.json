@@ -7,6 +7,7 @@
     "start": "webpack serve --open",
     "build": "webpack --mode production",
     "test": "NODE_OPTIONS='--loader ts-node/esm' jest --config jest.config.ts",
+    "deploy": "npm run styleguide:build && gh-pages -d styleguide",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
   },
@@ -33,6 +34,7 @@
     "cli-table3": "^0.6.3",
     "css-loader": "^6.10.0",
     "esm": "^3.2.25",
+    "gh-pages": "^6.1.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
