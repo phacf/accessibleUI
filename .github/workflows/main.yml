@@ -26,6 +26,9 @@ jobs:
     needs: build
 
     steps:
+      - name: Navigate to Project Directory
+        run: cd accessibleUI
+        
       - name: Run Tests
         run: npm run test
 
