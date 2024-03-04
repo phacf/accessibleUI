@@ -1,24 +1,34 @@
-import React, { useEffect, useRef } from 'react'
-import {Tooltip} from '../'
+import React from 'react'
 import 'tailwindcss/tailwind.css'
-import { getComponentPosition } from '../../utils'
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+import { Tooltip } from '../'
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Texto que aparecerá no botão
    */
   label: string
+  /**
+   * Inclui uma descrição de áudio para usuários de leitores de tela
+   */
   audioDescription?: string
-  color: 'primary' | 'secondary' | 'primary_outline' | 'secondary_outline'
-  size: 'large' | 'medium' | 'small'
+  /**
+   * Estilo do botão
+   */
+  color?: 'primary' | 'secondary' | 'primary_outline' | 'secondary_outline'
+  /**
+   * Tamanho do botão
+   */
+  size?: 'large' | 'medium' | 'small'
+  /**
+   * Tooltip do botão
+   */
   tooltip?: string
 }
 
 export const Button = (props: ButtonProps) => {
 
-  const { size, color, label, audioDescription, tooltip } = props
-
-  const buttonRef = useRef<HTMLDivElement>(null)
+  const { size = 'medium', color = 'primary', label, audioDescription, tooltip } = props
 
   const sizes = {
     small: 'text-sm font-medium px-3 py-2',
@@ -29,24 +39,17 @@ export const Button = (props: ButtonProps) => {
   const styles = {
     primary: `cursor-pointer bg-primary-600 text-light-300 rounded-md hover:bg-primary-400`,
     primary_outline: `cursor-pointer text-primary-600 border-2 border-primary-600 rounded-md hover:bg-primary-50`,
-    secondary: `cursor-pointer bg-secondary-400 text-eastern-blue-950 rounded-md hover:bg-secondary-300 `,
-    secondary_outline: `cursor-pointer text-eastern-blue-950 border-2 border-secondary-300 rounded-md hover:bg-secondary-100 `,
+    secondary: `cursor-pointer bg-secondary-400 text-eastern-blue-800 rounded-md hover:bg-secondary-300 `,
+    secondary_outline: `cursor-pointer text-eastern-blue-800 border-2 border-secondary-300 rounded-md hover:bg-secondary-100 `,
 
   }
 
-
-  useEffect(() => {
-    buttonRef.current && getComponentPosition(buttonRef.current.getBoundingClientRect())
-
-  }, [])
   return (
-    <div
-      ref={buttonRef}
-    >
+    <div>
       <Tooltip
         content={tooltip}>
         <button
-          className={`${styles[color]} ${sizes[size]} `}
+          className={`${styles[color]} ${sizes[size]}`}
           aria-label={label}
           data-tooltip-id="my-tooltip"
           {...props}
