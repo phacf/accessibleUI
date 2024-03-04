@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react'
-import {Tooltip} from '../'
+import React from 'react'
 import 'tailwindcss/tailwind.css'
-import { getComponentPosition } from '../../utils'
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+import { Tooltip } from '../'
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Texto que aparecerá no botão
    */
@@ -30,8 +30,6 @@ export const Button = (props: ButtonProps) => {
 
   const { size, color, label, audioDescription, tooltip } = props
 
-  const buttonRef = useRef<HTMLDivElement>(null)
-
   const sizes = {
     small: 'text-sm font-medium px-3 py-2',
     medium: 'px-5 py-2 font-medium',
@@ -46,15 +44,8 @@ export const Button = (props: ButtonProps) => {
 
   }
 
-
-  useEffect(() => {
-    buttonRef.current && getComponentPosition(buttonRef.current.getBoundingClientRect())
-
-  }, [])
   return (
-    <div
-      ref={buttonRef}
-    >
+    <div>
       <Tooltip
         content={tooltip}>
         <button

@@ -1,3 +1,10 @@
+const path = require('path');
+const webpackConfig = require('./webpack.config.js')
+
 module.exports = {
-  components: 'src/components/**/*.{js,jsx,ts,tsx}'
+  title: 'Style guide example',
+  components: path.resolve(__dirname,'src/components/**/*.tsx'),
+  webpackConfig,
+  
+
 }

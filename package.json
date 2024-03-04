@@ -9,7 +9,6 @@
     "test": "NODE_OPTIONS='--loader ts-node/esm' jest --config jest.config.ts",
     "styleguide": "npx styleguidist server",
     "styleguide:build": "npx styleguidist build"
-
   },
   "keywords": [],
   "author": "",
