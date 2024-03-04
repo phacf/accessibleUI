@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import 'tailwindcss/tailwind.css'
 import { getComponentPosition } from '../../utils'
 
@@ -10,6 +10,9 @@ interface TooltipProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTML
 export const Tooltip = (props: TooltipProps) => {
 
   const { content } = props
+
+  const [pos, setPos]= useState<string>('-bottom-7')
+
   const tooltipContainerRef = useRef<HTMLDivElement>(null)
 
   const position = {
@@ -21,6 +24,10 @@ export const Tooltip = (props: TooltipProps) => {
     return position[getComponentPosition(tooltipContainerRef?.current?.getBoundingClientRect())]
   }
 
+  useEffect(()=>{
+    setPos(handlePosition())
+  },[tooltipContainerRef])
+
   return (
     <div
       ref={tooltipContainerRef}
@@ -31,7 +38,7 @@ export const Tooltip = (props: TooltipProps) => {
         content &&
         <>
           <div></div>
-          <p className={`${handlePosition()} shadow-lg bg-primary-50 text-eastern-blue-950 text-xs rounded-md opacity-0 group-hover:opacity-100 duration-300 left-1/2  -translate-x-1/2 p-1 absolute whitespace-nowrap`}>
+          <p className={`${pos} shadow-lg bg-primary-50 text-eastern-blue-950 text-xs rounded-md opacity-0 group-hover:opacity-100 duration-300 left-1/2  -translate-x-1/2 p-1 absolute whitespace-nowrap`}>
             {content}
           </p>
         </>
