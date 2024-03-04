@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Navigate to Project Directory
-        run: cd accessibleUI
+        run: cd ..
 
       - name: Run Tests and Typecheck
         run: npm run test
