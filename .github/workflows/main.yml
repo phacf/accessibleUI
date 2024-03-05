@@ -30,7 +30,6 @@ jobs:
 
     steps:
       - name: Set Working Directory
-        run: cd accessibleUI
         working-directory: ../accessibleUI
 
       - name: Debug - Print Working Directory
