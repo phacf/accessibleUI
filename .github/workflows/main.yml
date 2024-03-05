@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  Start environment:
+  start:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,17 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+  build:
+    uns-on: ubuntu-latest
+    needs: start
+
+    steps:
+      - name: Styleguidist build
+        run: npm run styleguide:build
+
+      - name: Build Production Webpack Code
+        run: npm run build
+
   test:
     runs-on: ubuntu-latest
     needs: build
@@ -34,12 +45,6 @@ jobs:
 
       - name: Run Tests
         run: npm --prefix accessibleUI run test
-
-      - name: Styleguidist build
-        run: npm run styleguide:build
-
-      - name: Build Production Webpack Code
-        run: npm run build
 
   deploy:
     runs-on: ubuntu-latest
