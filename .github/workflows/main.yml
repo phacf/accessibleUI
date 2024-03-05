@@ -26,6 +26,12 @@ jobs:
     needs: start
 
     steps:
+      - name: Debug - Print Working Directory
+        run: pwd
+
+      - name: Debug - List Directory Content
+        run: ls
+
       - name: Styleguidist build
         run: npm --prefix accessibleUI run styleguide:build
 
@@ -37,12 +43,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Debug - Print Working Directory
-        run: pwd
-
-      - name: Debug - List Directory Content
-        run: ls
-
       - name: Run Tests
         run: npm --prefix accessibleUI run test
 
