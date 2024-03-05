@@ -29,9 +29,6 @@ jobs:
     needs: start
 
     steps:
-      - name: Set Working Directory
-        working-directory: ../accessibleUI
-
       - name: Debug - Print Working Directory
         run: pwd
 
