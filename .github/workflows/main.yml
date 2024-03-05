@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Debug - Print Working Directory
+        run: pwd
+
       - name: Install Dependencies
         run: npm install
 
@@ -26,11 +29,12 @@ jobs:
     needs: start
 
     steps:
+      - name: Set Working Directory
+        run: cd accessibleUI
+        working-directory: ../accessibleUI
+
       - name: Debug - Print Working Directory
         run: pwd
-
-      - name: Debug - List Directory Content
-        run: ls
 
       - name: Run Styleguide Build
         run: npm --prefix /home/runner/work/accessibleUI/accessibleUI run styleguide:build
