@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  Start environment:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +26,14 @@ jobs:
     needs: build
 
     steps:
+      - name: Debug - Print Working Directory
+        run: pwd
+
+      - name: Debug - List Directory Content
+        run: ls
+
       - name: Run Tests
-        run: npm run test
+        run: npm --prefix accessibleUI run test
 
       - name: Styleguidist build
         run: npm run styleguide:build
