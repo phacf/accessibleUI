@@ -32,12 +32,14 @@ jobs:
       - name: Debug - Print Working Directory
         run: pwd
 
-      - name: Run Styleguide Build
-        run: npm --prefix /home/runner/work/accessibleUI/accessibleUI run styleguide:build
+      - name: Set Project Directory
+        run: echo "::set-env name=PROJECT_DIR::$(pwd)/accessibleUI"
 
+      - name: Run Styleguide Build
+        run: npm --prefix ${{ env.PROJECT_DIR }} run styleguide:build
 
       - name: Build Production Webpack Code
-        run: npm --prefix accessibleUI run build
+        run: npm --prefix ${{ env.PROJECT_DIR }} run build
 
   test:
     runs-on: ubuntu-latest
@@ -45,7 +47,7 @@ jobs:
 
     steps:
       - name: Run Tests
-        run: npm --prefix accessibleUI run test
+        run: npm --prefix ${{ env.PROJECT_DIR }} run test
 
   deploy:
     runs-on: ubuntu-latest
