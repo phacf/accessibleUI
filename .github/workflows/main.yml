@@ -29,14 +29,12 @@ jobs:
       - name: Debug - Print Working Directory
         run: pwd
 
-      - name: volta uma pasta
-        run: cd ..
-
       - name: Debug - List Directory Content
         run: ls
 
-      - name: Styleguidist build
-        run: npm --prefix accessibleUI run styleguide:build
+      - name: Run Styleguide Build
+        run: npm --prefix /home/runner/work/accessibleUI/accessibleUI run styleguide:build
+
 
       - name: Build Production Webpack Code
         run: npm --prefix accessibleUI run build
