@@ -27,10 +27,10 @@ jobs:
 
     steps:
       - name: Styleguidist build
-        run: npm run styleguide:build
+        run: npm --prefix accessibleUI run styleguide:build
 
       - name: Build Production Webpack Code
-        run: npm run build
+        run: npm --prefix accessibleUI run build
 
   test:
     runs-on: ubuntu-latest
