@@ -29,6 +29,9 @@ jobs:
       - name: Debug - Print Working Directory
         run: pwd
 
+      - name: volta uma pasta
+        run: cd ..
+
       - name: Debug - List Directory Content
         run: ls
 
