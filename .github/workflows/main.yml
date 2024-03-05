@@ -33,13 +33,16 @@ jobs:
         run: pwd
 
       - name: Set Project Directory
-        run: echo "::set-env name=PROJECT_DIR::/home/runner/work/accessibleUI"
+        id: set_project_dir
+        run: echo "PROJECT_DIR=$(pwd)/accessibleUI" >> $GITHUB_ENV
+
 
       - name: Run Styleguide Build
         run: npm --prefix ${{ env.PROJECT_DIR }} run styleguide:build
 
       - name: Build Production Webpack Code
         run: npm --prefix ${{ env.PROJECT_DIR }} run build
+
 
   test:
     runs-on: ubuntu-latest
