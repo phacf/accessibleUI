@@ -34,7 +34,7 @@ jobs:
 
       - name: Set Project Directory
         id: set_project_dir
-        run: echo "PROJECT_DIR=$(pwd)/accessibleUI" >> $GITHUB_ENV
+        run: echo "PROJECT_DIR=home/runner/work/accessibleUI/" >> $GITHUB_ENV
 
 
       - name: Run Styleguide Build
